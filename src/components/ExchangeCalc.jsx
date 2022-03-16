@@ -21,8 +21,8 @@ const ExchangeForm = ({ btcPrice, moneyTypes, moneyPrices, cryptoPrices ,coinLis
     console.log(e.target.name);
   };
   return (
-    <form className="w-full max-w-4xl mx-auto">
-      <div className="flex  ">
+    <div className="w-full max-w-4xl mx-auto">
+      <div className="flex ">
         <div className="w-full px-2">
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -117,7 +117,7 @@ const ExchangeForm = ({ btcPrice, moneyTypes, moneyPrices, cryptoPrices ,coinLis
           </div>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 
