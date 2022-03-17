@@ -34,9 +34,9 @@ const FullArticle = ({ article }) => {
           <br />
           <div
             onClick={handleFullArticle}
-            className="text-red-500 cursor-pointer"
+            className="text-red-500 cursor-pointer text-xl"
           >
-            show less
+            Show Less
           </div>
         </>
       ) : (

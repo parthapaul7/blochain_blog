@@ -6,8 +6,8 @@ const NavBar = () => {
       <div className="m-5 font-bold text-xl">BlockChaninBlog.com</div>
       <div className="ml-auto flex space-x-8 mr-10">
         <div><Link to="/" className="text-white capitalize decoration-transparent">HOME</Link></div>
-        <div><Link to ="/exchange" className="text-white capitalize decoration-transparent">CALCULATE</Link></div>
-        <div>CHARTS</div>
+        <div><Link to ="/calc" className="text-white capitalize decoration-transparent">CALCULATE</Link></div>
+        <div><Link to ="/charts" className="text-white capitalize decoration-transparent">CHARTS</Link></div>
       </div>
     </nav>
   );

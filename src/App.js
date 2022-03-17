@@ -5,26 +5,30 @@ import Heading from "./components/Heading";
 import ExchangeCalc from "./components/ExchangeCalc";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PriceTable from "./components/PriceTable";
+import Charts from "./components/Charts";
 
 function App() {
   return (
     <>
       <Router>
+        <NavBar />  
+        {/*navBar present in all pages */}
         <Switch>
           <Route exact path="/">
-            <NavBar />
             <Heading />
             <div className="flex">
               <Sidebar />
               <Home />
             </div>
           </Route>
-
-          <Route path="/exchange">
-           <NavBar/> 
-           <div className="h-20"></div>
+          <Route path="/calc">
+            <div className="h-20"></div>
             <ExchangeCalc />
-            <PriceTable/>
+            <PriceTable />
+          </Route>
+          <Route path="/charts">
+            <div className="h-20"></div>
+            <Charts/>
           </Route>
         </Switch>
       </Router>

@@ -126,55 +126,6 @@ const ExchangeForm = ({
   );
 };
 
-// const PriceTable = () => {
-//   const [tableData, setTableData] = useState({});
-
-//   async function getTableData() {
-//     const shitdata = await fetch("https://blockchain.info/ticker");
-
-//     setTableData(await shitdata.json());
-//   }
-
-//   getTableData();
-//   // useEffect(() => {
-//   //   tableData = data;
-//   //   console.log(tableData);
-//   //   return () => {};
-//   // }, [data]);
-
-//   return (
-//     <>
-//       <table class="table-auto">
-//         <thead>
-//           <tr>
-//             <th>Money</th>
-//             <th>15 min before</th>
-//             <th>Cureent Price</th>
-//             <th>Buy</th>
-//             <th>Sell</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {Object.keys(tableData).map((value, index) => {
-//             return (
-//               <tr key={index}>
-//                 <td>{value}</td>
-//                 <td>{tableData[value]["15m"]}</td>
-//                 <td>{tableData[value].last}</td>
-//                 <td>{tableData[value].buy}</td>
-//                 <td>{tableData[value].sell}</td>
-//                 {/* <td>{value.buy}</td>
-//                 <td>{value.sell}</td>
-//                 <td>{value.symbol}</td> */}
-//               </tr>
-//             );
-//           })}
-//         </tbody>
-//       </table>
-//     </>
-//   );
-// };
-
 const ExchangeCalc = () => {
   const [btcPrice, setBtcPrice] = useState(0);
   const [moneyType, setMoneyType] = useState("USD");
@@ -189,11 +140,6 @@ const ExchangeCalc = () => {
     setBtcPrice(await shitData.json());
   }
 
-  /// will impliment this to make table
-  //   async function getCoinList() {
-  //     const shitData = await fetch("https://blockchain.info/ticker");
-  //     setCoinList(await shitData.json());
-  //   }
 
   useEffect(() => {
     getBtcPrice();
@@ -202,7 +148,7 @@ const ExchangeCalc = () => {
 
   return (
     <>
-      <div className="text-center my-20 text-2xl font-bold">
+      <div className="text-center my-20 text-2xl font-boldAlthough blockchain can save users money on transaction fees, the technology is far from free. For example, the PoW system which the bitcoin network uses to validate transactions, consumes vast amounts of computational power. In the real world, the power from the millions of computers on the bitcoin network is close to what Norway and Ukraine consume annually">
       1 BTC   = {1/btcPrice} {moneyType} 
       </div>
       <ExchangeForm
