@@ -3,8 +3,8 @@ import allArticle from "../articles/section1.json"
 
 const Sidebar = () => {
   return (
-    <div className="w-[20vw] h-[calc(100vh-48px)] bg-gray-300 sticky top-12">
-      <ul className="mt-10">
+    <div className="w-[20vw] h-[calc(100vh-48px)] bg-white sticky top-12  opacity-90">
+      <ul className="mt-10 mx-5 overflow-hiddener">
           {allArticle.map((e,i)=>{
              return <a key={i} href={`#${i}`} className="p-2 block" >{e.heading}</a> 
           })}

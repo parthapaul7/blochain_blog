@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Heading from "./components/Heading";
 import ExchangeCalc from "./components/ExchangeCalc";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PriceTable from "./components/PriceTable";
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
             </div>
           </Route>
 
-          <Route path="/exhange">
+          <Route path="/exchange">
            <NavBar/> 
-            <Heading />
+           <div className="h-20"></div>
             <ExchangeCalc />
+            <PriceTable/>
           </Route>
         </Switch>
       </Router>

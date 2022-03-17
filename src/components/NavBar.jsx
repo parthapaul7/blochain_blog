@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+
 const NavBar = () => {
   return (
-    <nav className="h-12 bg-yellow-400 flex items-center w-[100vw] fixed z-10">
-      <div className="m-5">BlockChaninBlog.com</div>
-      <div className="ml-auto flex space-x-5 mr-5">
-        <div>HOME</div>
-        <div>CALCULATE</div>
+    <nav className="h-12 bg-[#396EB0] flex items-center w-[100vw] fixed z-10 text-white">
+      <div className="m-5 font-bold text-xl">BlockChaninBlog.com</div>
+      <div className="ml-auto flex space-x-8 mr-10">
+        <div><Link to="/" className="text-white capitalize decoration-transparent">HOME</Link></div>
+        <div><Link to ="/exchange" className="text-white capitalize decoration-transparent">CALCULATE</Link></div>
         <div>CHARTS</div>
       </div>
     </nav>

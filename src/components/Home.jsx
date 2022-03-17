@@ -3,10 +3,10 @@ import articleData from "../articles/section1.json";
 
 const Home = () => {
   return (
-    <main className="w-[80vw]">
+    <main className="w-[80vw] bg-white">
       {articleData.map((e, i) => {
         return (
-          <div key={i} id={i} className="bg-gray-200 text-left m-5 p-5">
+          <div key={i} id={i} className="bg-[#DADDFC] text-left m-5 p-5 rounded-md ">
             <div className="text-2xl my-5">{e.heading}</div>
             <FullArticle article={e} />
           </div>
@@ -43,12 +43,12 @@ const FullArticle = ({ article }) => {
         <>
           <article>
             {article.metaDesc.substring(0, 500)}
-            <span
+            <div
               onClick={handleFullArticle}
-              className="text-green-600 cursor-pointer"
+              className="text-green-600 cursor-pointer text-xl py-5"
             >
-              ....Read More......
-            </span>
+              Read More
+            </div>
           </article>
         </>
       )}

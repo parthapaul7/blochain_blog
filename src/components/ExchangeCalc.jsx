@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const ExchangeForm = ({ btcPrice, moneyTypes, moneyPrices, cryptoPrices ,coinList}) => {
+const ExchangeForm = ({
+  btcPrice,
+  moneyTypes,
+  moneyPrices,
+  cryptoPrices,
+  coinList,
+}) => {
   const [moneyPrice, setMoneyPrice] = moneyPrices;
   const [cryptoType, setCryptoType] = useState("BTC");
   const [moneyType, setMoneyType] = moneyTypes;
@@ -94,16 +100,15 @@ const ExchangeForm = ({ btcPrice, moneyTypes, moneyPrices, cryptoPrices ,coinLis
               value={moneyType}
               onChange={handleChange}
             >
-                <option>USD</option>
-                <option>EUR</option>
-                <option>INR</option>
-                <option>AUD</option>
-                <option>BRL</option>
-                <option>CDA</option>
-                <option>CHF</option>
-                <option>CLP</option>
-                <option>SGD</option>
-              
+              <option>USD</option>
+              <option>EUR</option>
+              <option>INR</option>
+              <option>AUD</option>
+              <option>BRL</option>
+              <option>CDA</option>
+              <option>CHF</option>
+              <option>CLP</option>
+              <option>SGD</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -121,28 +126,74 @@ const ExchangeForm = ({ btcPrice, moneyTypes, moneyPrices, cryptoPrices ,coinLis
   );
 };
 
-const ExchangeCalc = () => {
-  const [btcPrice, setBtcPrice] = useState();
-  const [moneyType, setMoneyType] = useState("USD");
-  const [moneyPrice, setMoneyPrice] = useState();
-  const [cryptoPrice, setCryptoPrice] = useState();
-  const [coinList, setCoinList] = useState([]);
+// const PriceTable = () => {
+//   const [tableData, setTableData] = useState({});
 
+//   async function getTableData() {
+//     const shitdata = await fetch("https://blockchain.info/ticker");
+
+//     setTableData(await shitdata.json());
+//   }
+
+//   getTableData();
+//   // useEffect(() => {
+//   //   tableData = data;
+//   //   console.log(tableData);
+//   //   return () => {};
+//   // }, [data]);
+
+//   return (
+//     <>
+//       <table class="table-auto">
+//         <thead>
+//           <tr>
+//             <th>Money</th>
+//             <th>15 min before</th>
+//             <th>Cureent Price</th>
+//             <th>Buy</th>
+//             <th>Sell</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {Object.keys(tableData).map((value, index) => {
+//             return (
+//               <tr key={index}>
+//                 <td>{value}</td>
+//                 <td>{tableData[value]["15m"]}</td>
+//                 <td>{tableData[value].last}</td>
+//                 <td>{tableData[value].buy}</td>
+//                 <td>{tableData[value].sell}</td>
+//                 {/* <td>{value.buy}</td>
+//                 <td>{value.sell}</td>
+//                 <td>{value.symbol}</td> */}
+//               </tr>
+//             );
+//           })}
+//         </tbody>
+//       </table>
+//     </>
+//   );
+// };
+
+const ExchangeCalc = () => {
+  const [btcPrice, setBtcPrice] = useState(0);
+  const [moneyType, setMoneyType] = useState("USD");
+  const [moneyPrice, setMoneyPrice] = useState(0);
+  const [cryptoPrice, setCryptoPrice] = useState(0);
+  const [coinList, setCoinList] = useState([]);
 
   async function getBtcPrice() {
     const shitData = await fetch(
       `https://blockchain.info/tobtc?currency=${moneyType}&value=1`
     );
     setBtcPrice(await shitData.json());
-    setMoneyPrice(cryptoPrice / btcPrice);
   }
 
   /// will impliment this to make table
-//   async function getCoinList() {
-//     const shitData = await fetch("https://blockchain.info/ticker");
-//     setCoinList(await shitData.json());
-//   }
- 
+  //   async function getCoinList() {
+  //     const shitData = await fetch("https://blockchain.info/ticker");
+  //     setCoinList(await shitData.json());
+  //   }
 
   useEffect(() => {
     getBtcPrice();
@@ -151,16 +202,17 @@ const ExchangeCalc = () => {
 
   return (
     <>
-      <div className="text-center my-8">
-        1 {moneyType} = {btcPrice} BTC
+      <div className="text-center my-20 text-2xl font-bold">
+      1 BTC   = {1/btcPrice} {moneyType} 
       </div>
       <ExchangeForm
         btcPrice={btcPrice}
         moneyTypes={[moneyType, setMoneyType]}
         moneyPrices={[moneyPrice, setMoneyPrice]}
         cryptoPrices={[cryptoPrice, setCryptoPrice]}
-        coinList = {coinList}
+        coinList={coinList}
       />
+      {/* <PriceTable /> */}
     </>
   );
 };
