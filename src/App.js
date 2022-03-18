@@ -6,7 +6,7 @@ import ExchangeCalc from "./components/ExchangeCalc";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PriceTable from "./components/PriceTable";
 import Charts from "./components/Charts";
-
+import "./hosting/firebase.js"
 function App() {
   return (
     <>
