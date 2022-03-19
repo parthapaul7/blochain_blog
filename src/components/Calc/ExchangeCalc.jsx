@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { getBtcPrice,getTableData} from "../../shared/chartsApi";
+
 
 const ExchangeForm = ({
   btcPrice,
   moneyTypes,
   moneyPrices,
   cryptoPrices,
-  coinList,
+  moneyLists
 }) => {
   const [moneyPrice, setMoneyPrice] = moneyPrices;
   const [cryptoType, setCryptoType] = useState("BTC");
@@ -99,16 +101,9 @@ const ExchangeForm = ({
               name="moneyType"
               value={moneyType}
               onChange={handleChange}
-            >
-              <option>USD</option>
-              <option>EUR</option>
-              <option>INR</option>
-              <option>AUD</option>
-              <option>BRL</option>
-              <option>CDA</option>
-              <option>CHF</option>
-              <option>CLP</option>
-              <option>SGD</option>
+            >{moneyLists.map((e,i)=>{
+              return <option key={i}>{e}</option>
+            })}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
               <svg
@@ -131,18 +126,18 @@ const ExchangeCalc = () => {
   const [moneyType, setMoneyType] = useState("USD");
   const [moneyPrice, setMoneyPrice] = useState(0);
   const [cryptoPrice, setCryptoPrice] = useState(0);
-  const [coinList, setCoinList] = useState([]);
-
-  async function getBtcPrice() {
-    const shitData = await fetch(
-      `https://blockchain.info/tobtc?currency=${moneyType}&value=1`
-    );
-    setBtcPrice(await shitData.json());
+  const [moneyLists,setMoneyLists] = useState([])
+  
+  async function getData() {
+    setBtcPrice(await getBtcPrice(moneyType))
+    
+    const tableData = await getTableData()
+    setMoneyLists (Object.keys(tableData)) 
   }
 
 
   useEffect(() => {
-    getBtcPrice();
+    getData();
     return () => {};
   }, [moneyType]);
 
@@ -156,9 +151,8 @@ const ExchangeCalc = () => {
         moneyTypes={[moneyType, setMoneyType]}
         moneyPrices={[moneyPrice, setMoneyPrice]}
         cryptoPrices={[cryptoPrice, setCryptoPrice]}
-        coinList={coinList}
+        moneyLists={moneyLists}
       />
-      {/* <PriceTable /> */}
     </>
   );
 };

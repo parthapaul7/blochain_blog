@@ -1,5 +1,5 @@
 import { useState } from "react";
-import articleData from "../articles/section1.json";
+import articleData from "../../shared/articles.json";
 
 const Home = () => {
   return (

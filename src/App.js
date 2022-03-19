@@ -1,16 +1,17 @@
 import NavBar from "./components/NavBar";
-import Home from "./components/Home";
-import Sidebar from "./components/Sidebar";
-import Heading from "./components/Heading";
-import ExchangeCalc from "./components/ExchangeCalc";
+import Home from "./components/Home/Home";
+import Sidebar from "./components/Home/Sidebar";
+import Heading from "./components/Home/Heading";
+import ExchangeCalc from "./components/Calc/ExchangeCalc";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PriceTable from "./components/PriceTable";
-import Charts from "./components/Charts";
-import "./hosting/firebase.js"
+import PriceTable from "./components/Calc/PriceTable";
+import Charts from "./components/charts/Charts";
+
 function App() {
   return (
     <>
-      <Router>
+      <Router>  
+         {/* using react router v5 */}
         <NavBar />  
         {/*navBar present in all pages */}
         <Switch>

@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { getTableData } from "../../shared/chartsApi.js";
 
 const PriceTable = () => {
   const [tableData, setTableData] = useState({});
 
-  async function getTableData() {
-    const shitdata = await fetch("https://blockchain.info/ticker");
-
-    setTableData(await shitdata.json());
+  async function getData() {
+    setTableData(await getTableData());
   }
-  useEffect(() => {
-    getTableData();
 
+  useEffect(() => {
+    getData();
     return () => {};
   }, []);
 
