@@ -6,7 +6,7 @@ const Home = () => {
     <main className="w-[80vw] bg-white">
       {articleData.map((e, i) => {
         return (
-          <div key={i} id={i} className="bg-[#DADDFC] text-left m-5 p-5 rounded-md ">
+          <div key={i} id={i} className="border-b-2 border-black border-dotted text-left m-5 p-5 ">
             <div className="text-2xl my-5">{e.heading}</div>
             <FullArticle article={e} />
           </div>
