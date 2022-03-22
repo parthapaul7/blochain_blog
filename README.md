@@ -1,10 +1,8 @@
 # Try this here
-https://blockchain-blog7.web.app/
+ https://blockchain-blog7.web.app/
+ 
+ **Tailwind css is used**
 
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
